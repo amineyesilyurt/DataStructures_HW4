@@ -1,26 +1,23 @@
 package edu.gtu.amine;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Stack;
 
 /**
  * Created by Amine on 20/03/2017.
  */
-public class StackA<E> extends ArrayList<E> implements StackInterface{
+public class StackB<E> implements StackInterface{
 
+    ArrayList stack= new ArrayList<E>();
 
-    public StackA() {
-        super();
+    public StackB() {
     }
-
     /**
      *
      * @return  int size of the stack
      */
     @Override
     public int size() {
-        return super.size();
+        return stack.size();
     }
 
     /**
@@ -29,7 +26,7 @@ public class StackA<E> extends ArrayList<E> implements StackInterface{
      */
     @Override
     public boolean isEmpty() {
-        return super.isEmpty();
+        return stack.isEmpty();
     }
 
     /**
@@ -38,7 +35,7 @@ public class StackA<E> extends ArrayList<E> implements StackInterface{
      */
     @Override
     public String toString() {
-        StringBuffer str = new StringBuffer(super.toString());
+        StringBuffer str = new StringBuffer(stack.toString());
         str.deleteCharAt(0);
         str.deleteCharAt(str.length()-1);
         return str.toString();
@@ -53,7 +50,7 @@ public class StackA<E> extends ArrayList<E> implements StackInterface{
      */
     @Override
     public void push(Object item){
-        add((E)item);
+        stack.add(item);
     }
 
     /**
@@ -64,10 +61,10 @@ public class StackA<E> extends ArrayList<E> implements StackInterface{
      * @throws Exception  Throws Exception if the stack is empty.
      */
     @Override
-    public E pop() throws Exception {
+    public Object pop() throws Exception {
         if(isEmpty())
             throw new Exception("Stack is empty!");
         else
-            return remove(size()-1);
+            return stack.remove(stack.size()-1);
     }
 }
