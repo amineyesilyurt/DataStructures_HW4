@@ -21,6 +21,10 @@ class NodeList<E> {
     private Node<E> first = null;
     private int size=0;
 
+    /**
+     *
+     * @param data will ad first
+     */
     public void addFirst(E data) {
         Node<E> newFirst = new Node<E>(data);
         newFirst.next = first;
@@ -28,6 +32,10 @@ class NodeList<E> {
         ++size;
     }
 
+    /**
+     *
+     * @return removed item
+     */
     public E removeFirst() {
         Node<E> oldFirst = first;
         first = first.next;
@@ -46,10 +54,18 @@ class NodeList<E> {
         return builder.toString();
     }
 
+    /**
+     *
+     * @return if list emty returns true ,otherwise false
+     */
     public boolean isEmpty() {
         return first == null;
     }
 
+    /**
+     *
+     * @return  size of the list
+     */
     public int size(){
         return  size;
     }

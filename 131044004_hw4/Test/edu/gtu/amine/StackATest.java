@@ -1,45 +1,36 @@
 package edu.gtu.amine;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.Assert;
 
 /**
  * Created by Amine on 20/03/2017.
  */
+
+
 public class StackATest {
-    /*
-    @Test
-    public void size() throws Exception {
 
+    StackA sa= new StackA();
+
+    public void testSize(){
+        sa.push("Amine");
+        Assert.assertEquals(1,sa.size());
     }
 
-    @Test
-    public void isEmpty() throws Exception {
-
+    public void tesPush(){
+        sa.push("Amine");
+        sa.push(19);
+        Assert.assertEquals(false,sa.isEmpty());
     }
 
-    @Test
-    public void toString() throws Exception {
-
+    public void tesPop(){
+        sa.push("Amine");
+        sa.push(19);
+        try {
+            sa.pop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals(1,sa.size());
     }
 
-    @Test
-    public void push() throws Exception {
-
-    }
-
-    @Test
-    public void pop() throws Exception {
-
-    }
-
-    private  StackA obj= new StackA("Amine");
-
-    @Test
-    public void testGetName() throws Exception {
-        assertEquals("Amine",obj.getName());
-        //fail();
-    }
-    */
 }

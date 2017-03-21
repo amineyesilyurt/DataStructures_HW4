@@ -1,13 +1,7 @@
 package edu.gtu.amine;
 
-import groovy.ui.SystemOutputInterceptor;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.FileSystemNotFoundException;
-import java.util.Scanner;
 
 public class MainQ1 {
 
@@ -16,6 +10,7 @@ public class MainQ1 {
         StackA sA = new StackA<>();
         StackB sB = new StackB<>();
         StackC sC = new StackC<>();
+        StackD sD = new StackD<>();
         // reading csv file
         System.out.print("Enter file name to read:_");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -27,23 +22,105 @@ public class MainQ1 {
             System.err.println(e.getMessage());
         }
 
+
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(new File("testResult_1.csv"));
+        } catch (FileNotFoundException e1) {
+            System.err.println(e1.getMessage());
+        }
+
+        try {
+            br = new BufferedReader(new FileReader(filename));
+        } catch (FileNotFoundException e1) {
+            System.err.println(e1.getMessage());
+        }
+
+
         try {
 
-            br = new BufferedReader(new FileReader(filename));
-            line = br.readLine();
-            // use comma as separator
-            String[] elements = line.split(",");
-            for (int i = 0; i < elements.length; ++i) {
-                sA.push(elements[i]);
-                sB.push(elements[i]);
-                sC.push(elements[i]);
+
+            while( (line=br.readLine())!=null) {
+
+                // use comma as separator
+                String[] elements = line.split(",");
+                for (int i = 0; i < elements.length; ++i) {
+                    sA.push(elements[i]);
+                    sB.push(elements[i]);
+                    sC.push(elements[i]);
+                    sD.push(elements[i]);
+                }
+
+                StringBuffer csvFormatA = new StringBuffer();
+                csvFormatA.append(sA.size() + ",");
+
+                StringBuffer csvFormatB = new StringBuffer();
+                csvFormatB.append(sB.size() + ",");
+
+                StringBuffer csvFormatC = new StringBuffer();
+                csvFormatC.append(sC.size() + ",");
+
+                StringBuffer csvFormatD = new StringBuffer();
+                csvFormatD.append(sD.size() + ",");
+
+                while (!sA.isEmpty()) {
+
+                    try {
+                        csvFormatA.append( sA.pop()+",");
+                    } catch (Exception e1) {
+                        System.err.println(e1.getMessage());
+                    }
+                }
+
+                while (!sB.isEmpty()) {
+
+                    try {
+                        csvFormatB.append( sB.pop()+",");
+                    } catch (Exception e1) {
+                        System.err.println(e1.getMessage());
+                    }
+                }
+                while (!sC.isEmpty()) {
+
+                    try {
+                        csvFormatC.append( sC.pop()+",");
+                    } catch (Exception e1) {
+                        System.err.println(e1.getMessage());
+                    }
+                }
+
+
+                while (!sD.isEmpty()) {
+
+                    try {
+                        csvFormatD.append( sD.pop()+",");
+                    } catch (Exception e1) {
+                        System.err.println(e1.getMessage());
+                    }
+                }
+
+                //deleting last comma
+                csvFormatA.setCharAt(csvFormatA.length() - 1,'\n');
+                csvFormatB.setCharAt(csvFormatB.length() - 1,'\n');
+                csvFormatC.setCharAt(csvFormatC.length() - 1,'\n');
+                csvFormatD.setCharAt(csvFormatD.length() - 1,'\n');
+                /////////////////////////////////////////
+
+                pw.write(csvFormatA.toString());
+                pw.write(csvFormatB.toString());
+                pw.write(csvFormatC.toString());
+                pw.write(csvFormatD.toString());
             }
 
-        } catch (FileSystemNotFoundException e) {
+        } catch ( FileSystemNotFoundException e) {
+
+
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+
+        } finally
+
+        {
             if (br != null) {
                 try {
                     br.close();
@@ -53,36 +130,10 @@ public class MainQ1 {
             }
         }
 
-        System.out.print(sA.toString());
-        System.out.println(sA.size());
-        System.out.print(sB.toString());
-        System.out.println(sB.size());
-        System.out.print(sC.toString());
-        System.out.println(sC.size());
+        pw.close();
+        //System.out.print(sC.toString());
+        // System.out.println(sC.size());
 
-        try {
-            sA.pop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            sB.pop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            sC.pop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.print(sA.toString());
-        System.out.println(sA.size());
-        System.out.print(sB.toString());
-        System.out.println(sB.size());
-        System.out.print(sC.toString());
-        System.out.println(sC.size());
 
     }
 }
