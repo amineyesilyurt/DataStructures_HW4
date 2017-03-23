@@ -44,8 +44,8 @@ public class StackB<E> implements StackInterface{
 
     /**
      * Adds an item to the top of a stack.
-     * @pre item is the item to be added.
-     * @post If insertion is successful, item  is on the top of the stack
+     * pre item is the item to be added.
+     * post If insertion is successful, item  is on the top of the stack
      * @param item Adds an item to the top of a stack
      */
     @Override
@@ -55,8 +55,8 @@ public class StackB<E> implements StackInterface{
 
     /**
      * Removes the top of a stack
-     * @pre None
-     * @post If the stack is not empty, the item that was added most recently is removed from the stack and returned.
+     * pre None
+     * post If the stack is not empty, the item that was added most recently is removed from the stack and returned.
      * @return E the item that was added most recently is removed from the stack
      * @throws Exception  Throws Exception if the stack is empty.
      */

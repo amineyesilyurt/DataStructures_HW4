@@ -131,8 +131,7 @@ public class MainQ1 {
         }
 
         pw.close();
-        //System.out.print(sC.toString());
-        // System.out.println(sC.size());
+
 
 
     }
